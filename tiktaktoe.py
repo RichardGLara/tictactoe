@@ -3,16 +3,16 @@ import random   #-RANDOM gera opções randomicamente a partir de um range ou um
 import os       #-OS possibilita o uso de comandos de terminal, possibiliando interação com o S.O.
 
 
-def tied():
-    print("______________________ ___ ______ _____     ___ ___ ___ ________________________")
-    print("_____________/__   __//  //  ___//  _  \   /  //  //  /_________________________")
-    print("_______________/  /  /  //  /_  /  / |  | /  //  //  /__________________________")
-    print("______________/  /  /  //  __/ /  /  /  //__//__//__/___________________________")
-    print("_____________/  /  /  //  /__ /  /__/  /___ ___ ___ ____________________________")
-    print("____________/__/  /__/ |____//________//__//__//__/_____________________________")
+def tied():     #Função para exibir aviso de empate
+    print("______________________ ___ ______ _____     ___ ___ ___  _______________________")
+    print("_____________/__   __//  //  ___//  _  #   /  //  //  / ________________________")
+    print("_______________/  /  /  //  /_  /  / |  | /  //  //  / _________________________")
+    print("______________/  /  /  //  __/ /  /  /  //__//__//__/ __________________________")
+    print("_____________/  /  /  //  /__ /  /__/  /___ ___ ___  ___________________________")
+    print("____________/__/  /__/ |____//________//__//__//__/ ____________________________")
 
 
-def win():
+def win():      #Função para exibir tela de vencedor
     print("_______________   ___   ___  ___  ___   ___   ___ ___ ___  _____________________")
     print("____________|  | /   | /  / /  / /   | /  /  /  //  //  / ______________________")
     print("____________|  |/    |/  / /  / /    |/  /  /  //  //  / _______________________")
@@ -24,20 +24,20 @@ def win():
 def logo():     #Função para exibir a logomarca do jogo
     print("")
     print("           _____________________________________________________________________")
-    print("WELCOME TO ___________ ___ _____________________________________________________")
-    print("_____________/__   __//  //  ___/_______________________________________________")
-    print("_______________/  /  /  //  /___________________________________________________")
-    print("______________/  /  /  //  /________ ________   ________________________________")
-    print("_____________/  /  /  //  //__   __//  ___   |/  ___/___________________________")
-    print("____________/__/  /__/ |____//  /  /  /__/  //  /_______________________________")
-    print("____________________________/  /  /  ___   //  /________________________________")
-    print("___________________________/  /  /  /  /  //  /_________________________________")
-    print("____________________ _____/__/ _/__/_ /__/ |_____/______________________________")
-    print("___________/__   __//  ___   |/  ___/___________________________________________")
-    print("_____________/  /  /  /  /  //  /_ _____________________________________________")
-    print("____________/  /  /  /  /  //  __/______________________________________________")
-    print("___________/  /  /  /__/  //  /_________________________________________________")
-    print("__________/__/   |_______/ |_____/______________________________________________")
+    print("WELCOME TO ___________ ___ ______  _____________________________________________")
+    print("_____________/__   __//  //  ___/ ______________________________________________")
+    print("_______________/  /  /  //  /  _________________________________________________")
+    print("______________/  /  /  //  /________ ________   _____  _________________________")
+    print("_____________/  /  /  //  //__   __//  ___   |/  ___/ __________________________")
+    print("____________/__/  /__/ |____//  /  /  /__/  //  / ______________________________")
+    print("____________________________/  /  /  ___   //  / _______________________________")
+    print("___________________________/  /  /  /  /  //  /___  ____________________________")
+    print("____________________ _____/__/ _/__/_ /__/ |_____/ _____________________________")
+    print("___________/__   __//  ___   |/  ___/ __________________________________________")
+    print("_____________/  /  /  /  /  //  /_  ____________________________________________")
+    print("____________/  /  /  /  /  //  __/ _____________________________________________")
+    print("___________/  /  /  /__/  //  /___  ____________________________________________")
+    print("__________/__/   |_______/ |_____/ _____________________________________________")
     print("________________________________________________________by RichardGLara (2024)__")
     print("")
 
@@ -79,9 +79,9 @@ def choose_marker():
 
 
 
-def mark_position(board, marker, position):
-
-    board[position] = marker
+def mark_position(board, marker, position):     #Esta função espera a entrada 'board', 'marker' e 'position'
+                                                # para alterao a marcar (X ou O) na posição escolhida pelo jogador
+    board[position] = marker    #Na posição (?) marcar (X ou O)
 
 
 def check_victory(board, marker):
@@ -127,71 +127,88 @@ def check_tied(board):
     return True
 
 
-def choice_move(board, player):
+def choice_move(board, player):     #Função para a escolha da posição no tabuleiro
 
-    position = ' '
+    position = ' '                      #A variável começa declarada como vazia
     while position not in '1 2 3 4 5 6 7 8 9'.split() or not check_space(board, int(position)):
+        #Loop while até que a posição não esteja entre 1 e 9 ou não esteja vazia
 
         position = input(f"{player.title()} - Choose your move between 1-9: ")
+        #variavel 'position' pede uma entrada e exibe mensagem pedindo um numero entre 1 e 9
 
-    return int(position)
+    return int(position)    #Retorna um nunmero inteiro na variável 'position'
 
 
-def replay():
+def replay():   #Função para a ação de jogar novamente a pós o fim do jogo
 
     return input('Do you want to play again? Yes or no? ').lower().startswith('y')
+    #rRetorna a entrada de dados, se 'y' ou algo iniciando com y, o jogo reinicia.
+    #Qualquer outra coisa ou somente 'ENTER', o jogo é encerrado
 
 
-while True:
+                # INICIO DO JOGO 
+while True:     #Ferificador de condição (True ou False), começa como True
 
     os.system("cls" if os.name == 'nt' else "clear")
-    logo()
+        #Limpa a tela
+        #comando 'cls' para sistemas Windows ou 'clear' para sistemas posix
 
-    board = [" "] * 10  #Lista das opções de jogadas dentro do tabuleiro
-    player_1, player_2 = choose_marker() # 'player_1' e 'player_2' são diferentes de 'player1' e 'player2'
-    turno_jogador = first_player()
-    print(turno_jogador, "START!!!")
-    status_jogo = True
+    logo()      #Exibe a logo do Jogo
 
-    while status_jogo:
+    board = [" "] * 10  #Variável lista 'board' declarada vazia
+    player_1, player_2 = choose_marker() #Cuidado: 'player_1' e 'player_2' são diferentes de 'player1' e 'player2'
+        #Chama a função 'choose_maker' para declarar as funções 'player_1 e player_2 como 'X' e 'O'
+    
+    shift_player = first_player()
+        #A variável 'shift_player" recebe o retorno da função 'first_player'
+    
+    print(shift_player, "START!!!") #Exibe mensagem para iniciar o jogo
 
-        if turno_jogador == player1 :
+    game_status = True  #Ferificador de condição (True ou False), começa como True
+
+    while game_status:  #Loop while, enquanto 'game_status' é True, prossegue...
+
+        if shift_player == player1 :
             os.system("cls" if os.name == 'nt' else "clear")
             print_board(board)
-            posicao_jogada = choice_move(board, turno_jogador)
-            mark_position(board, player_1, posicao_jogada)
+            #Se 'shift_player' for igual a 'player1
+            #Limpa a tela
+            #Exibe tabuleiro
+
+            played_position = choice_move(board, shift_player)
+            mark_position(board, player_1, played_position)
 
             if check_victory(board, player_1):
                 print_board(board)
                 print(f"Congratulations {player1.upper()}, you won the match!!!")
                 win()
-                status_jogo = False
+                game_status = False
             else:
                 if check_tied(board):
                     print_board(board)
                     tied()
                     break
                 else:
-                    turno_jogador = player2
+                    shift_player = player2
 
         else:
             os.system("cls" if os.name == 'nt' else "clear")
             print_board(board)
-            posicao_jogada = choice_move(board, turno_jogador)
-            mark_position(board, player_2, posicao_jogada)
+            played_position = choice_move(board, shift_player)
+            mark_position(board, player_2, played_position)
 
             if check_victory(board, player_2):
                 print_board(board)
                 print(f"Congratulations {player2.upper()}, you won the match!!!")
                 win()
-                status_jogo = False
+                game_status = False
             else:
                 if check_tied(board):
                     print_board(board)
                     tied()
                     break
                 else:
-                    turno_jogador = player1
+                    shift_player = player1
 
     if not replay():
         break
