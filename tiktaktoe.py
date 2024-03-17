@@ -3,6 +3,24 @@ import random   #-RANDOM gera opções randomicamente a partir de um range ou um
 import os       #-OS possibilita o uso de comandos de terminal, possibiliando interação com o S.O.
 
 
+def tied():
+    print("______________________ ___ ______ _____     ___ ___ ___ ________________________")
+    print("_____________/__   __//  //  ___//  _  \   /  //  //  /_________________________")
+    print("_______________/  /  /  //  /_  /  / |  | /  //  //  /__________________________")
+    print("______________/  /  /  //  __/ /  /  /  //__//__//__/___________________________")
+    print("_____________/  /  /  //  /__ /  /__/  /___ ___ ___ ____________________________")
+    print("____________/__/  /__/ |____//________//__//__//__/_____________________________")
+
+
+def win():
+    print("_______________   ___   ___  ___  ___   ___   ___ ___ ___  _____________________")
+    print("____________|  | /   | /  / /  / /   | /  /  /  //  //  / ______________________")
+    print("____________|  |/    |/  / /  / /    |/  /  /  //  //  / _______________________")
+    print("____________|     /|    / /  / /  /|    /  /__//__//__/ ________________________")
+    print("____________|    / |   / /  / /  / |   /  ___ ___ ___  _________________________")
+    print("____________|___/  |__/ /__/ /__/  |__/  /__//__//__/ __________________________")
+
+
 def logo():     #Função para exibir a logomarca do jogo
     print("")
     print("           _____________________________________________________________________")
@@ -146,11 +164,12 @@ while True:
             if check_victory(board, player_1):
                 print_board(board)
                 print(f"Congratulations {player1.upper()}, you won the match!!!")
+                win()
                 status_jogo = False
             else:
                 if check_tied(board):
                     print_board(board)
-                    print("The game TIED!!!")
+                    tied()
                     break
                 else:
                     turno_jogador = player2
@@ -164,11 +183,12 @@ while True:
             if check_victory(board, player_2):
                 print_board(board)
                 print(f"Congratulations {player2.upper()}, you won the match!!!")
+                win()
                 status_jogo = False
             else:
                 if check_tied(board):
                     print_board(board)
-                    print("The game TIED!!!")
+                    tied()
                     break
                 else:
                     turno_jogador = player1
