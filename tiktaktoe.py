@@ -150,7 +150,7 @@ while True:
             else:
                 if check_tied(board):
                     print_board(board)
-                    print("The game tied !!!")
+                    print("The game TIED!!!")
                     break
                 else:
                     turno_jogador = player2
