@@ -63,7 +63,6 @@ def choose_marker():
     marker = ""                                
     while not (marker == "X" or marker == "O"):
         marker = input(f"{player1.title()}, do you want to be X or O? ").upper()
-
     if marker == "X":
         return ("X", "O" )    
     else:                                 
