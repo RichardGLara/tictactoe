@@ -146,7 +146,7 @@ def replay():   #Função para a ação de jogar novamente a pós o fim do jogo
     #Qualquer outra coisa ou somente 'ENTER', o jogo é encerrado
 
 
-                # INICIO DO JOGO 
+                # >>>>>> INICIO DO JOGO <<<<<< 
 while True:     #Ferificador de condição (True ou False), começa como True
 
     os.system("cls" if os.name == 'nt' else "clear")
