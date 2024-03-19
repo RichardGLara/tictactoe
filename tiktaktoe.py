@@ -131,7 +131,7 @@ def choice_move(board, player):     #Função para a escolha da posição no tab
 
     position = ' '                      #A variável começa declarada como vazia
     while position not in '1 2 3 4 5 6 7 8 9'.split() or not check_space(board, int(position)):
-        #Loop while até que a posição não esteja entre 1 e 9 ou não esteja vazia
+        #Loop while até que a posição não esteja entre 1 e 9 ou 'check_space' não seja True
 
         position = input(f"{player.title()} - Choose your move between 1-9: ")
         #variavel 'position' pede uma entrada e exibe mensagem pedindo um numero entre 1 e 9
